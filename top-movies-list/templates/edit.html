@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+<!-- This line extends the 'base.html' template, meaning it inherits its structure and any defined blocks -->
+
+{% from 'bootstrap5/form.html' import render_form %}
+<!-- This line imports the render_form function from the 'form.html' template in the 'bootstrap5' directory -->
+
+{% block title %}Edit Movies{% endblock %}
+<!-- This block defines the title for this particular page, which will be used in the <title> tag of the HTML output -->
+
+{% block content %}
+<!-- This block defines the main content of the page -->
+
+<div class="content">
+  <!-- This div contains the main content of the page -->
+
+  <h1 class="heading">{{movie.title}}</h1>
+  <!-- This line displays the title of the movie as a heading -->
+
+  <p class="description">Edit Movie Rating</p>
+  <!-- This paragraph provides a description or instruction for the editing task -->
+
+  {{ render_form(form, novalidate=True) }}
+  <!-- This line renders the form using the render_form function, passing the 'form' variable -->
+  <!-- The 'novalidate=True' argument disables HTML5 form validation -->
+</div>
+<!-- This line closes the content div -->
+
+{% endblock %}
+<!-- This line marks the end of the content block -->

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+<!-- This line extends the 'base.html' template, meaning it inherits its structure and any defined blocks -->
+
+{% block title %}My Top 10 Movies{% endblock %}
+<!-- This block defines the title for this particular page, which will be used in the <title> tag of the HTML output -->
+
+{% block content %}
+<!-- This block defines the main content of the page -->
+
+<div class="container">
+  <!-- This div contains the main content of the page -->
+
+  <h1 class="heading">My Top 10 Movies</h1>
+  <!-- This line creates a heading for the page -->
+
+  <p class="description">These are my all-time favourite movies.</p>
+  <!-- This paragraph provides a description or introduction to the list of movies -->
+
+  {% for movie in movies %}
+  <!-- This is a for loop that iterates over each movie in the 'movies' list -->
+
+  <div class="card" >
+    <!-- This div represents a card for each movie -->
+
+    <div class="front" style="background-image: url('{{movie.img_url}}');">
+        <!-- This div represents the front of the card, with a background image of the movie's poster -->
+
+        <p class="large">{{ movie.ranking }}</p>
+        <!-- This paragraph displays the ranking of the movie -->
+
+    </div>
+
+    <div class="back">
+      <!-- This div represents the back of the card -->
+
+      <div>
+        <!-- This div contains the details of the movie -->
+
+        <div class="title">{{movie.title}} <span class="release_date">({{movie.year}})</span></div>
+        <!-- This line displays the title of the movie along with its release year -->
+
+        <div class="rating">
+            <label>{{movie.rating}}</label>
+            <!-- This label displays the rating of the movie -->
+
+            <i class="fas fa-star star"></i>
+            <!-- This icon represents a star, indicating the movie's rating -->
+        </div>
+
+        <p class="review">"{{movie.review}}"</p>
+        <!-- This paragraph displays a review or comment about the movie -->
+
+        <p class="overview">{{movie.description}}</p>
+        <!-- This paragraph provides an overview or summary of the movie -->
+
+        <a href="{{ url_for('rate_movie', id=movie.id) }}" class="button">Update</a>
+        <!-- This link redirects the user to a page to update the movie's details -->
+
+        <a href="{{ url_for('delete_movie', id=movie.id) }}" class="button delete-button">Delete</a>
+        <!-- This link redirects the user to a page to delete the movie -->
+
+      </div>
+
+    </div>
+  </div>
+  {% endfor %}
+  <!-- This line marks the end of the for loop -->
+</div>
+<!-- This line closes the container div -->
+
+<div class="container text-center add">
+<a href="{{ url_for('add_movie') }}" class="button">Add Movie</a>
+<!-- This link redirects the user to a page to add a new movie -->
+</div>
+
+{% endblock %}
+<!-- This line marks the end of the content block -->

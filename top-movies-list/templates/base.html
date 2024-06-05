@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- The opening HTML tag -->
+
+<head>
+  <!-- The head section contains meta-information about the HTML document -->
+
+  <meta charset="UTF-8" />
+  <!-- This meta tag specifies the character encoding for the document -->
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+  <!-- This meta tag sets the viewport properties for responsive design -->
+
+  {% block styles %}
+  <!-- This block is for adding additional stylesheets -->
+
+  <!-- Load Bootstrap-Flask CSS here -->
+  {{ bootstrap.load_css() }}
+  <!-- This line loads Bootstrap-Flask CSS -->
+
+  <!-- Link to the styles.css here to apply styling to all the child templates.-->
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700"
+  />
+  <!-- This line links to Google Fonts to load the Nunito Sans font -->
+
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Poppins:300,400,700"
+  />
+  <!-- This line links to Google Fonts to load the Poppins font -->
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+    crossorigin="anonymous"
+  />
+  <!-- This line links to the Font Awesome library to use icons -->
+
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/styles.css') }}"
+  />
+  <!-- This line links to a custom stylesheet named styles.css -->
+
+  {% endblock %}
+  <!-- This line marks the end of the styles block -->
+
+  <title>{% block title %}{% endblock %}</title>
+  <!-- This block dynamically sets the title of the HTML page -->
+</head>
+<!-- The closing head tag -->
+
+<body>
+<!-- The body section contains the content of the HTML document -->
+
+{% block content %}{% endblock %}
+<!-- This block dynamically sets the content of the HTML page -->
+</body>
+<!-- The closing body tag -->
+</html>
+<!-- The closing HTML tag -->
+
